@@ -1,0 +1,5 @@
+{
+    "mongoURI" : "mongodb+srv://shadow-rogue:shadow-rogue@cluster0.6d02k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "secret",
+    "githubToken": "<yoursecrectaccesstoken>"
+  }
