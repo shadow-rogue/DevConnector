@@ -8,7 +8,7 @@ Backend: Node.js, Express.js and MongoDB
 
 
 
-It is hosted [here.](https://evening-oasis-48794.herokuapp.com/)
+It is hosted [here.](https://devconnector-qrnr.onrender.com/)
 
 ## Quick Start 🚀
 Add a default.json file in config folder with the following
