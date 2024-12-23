@@ -10,9 +10,17 @@ module.exports = function (req, res, next) {
     return res.status(401).json({ msg: 'No token, authorization denied' });
   }
 
+  let key = '';
+  //assign secret key if its production
+  if (process.env.NODE_ENV === 'production') {
+    key = process.env.JWT_S;
+  } else {
+    key = config.get('jwtSecret');
+  }
+
   // Verify token
   try {
-    jwt.verify(token, config.get('jwtSecret'), (error, decoded) => {
+    jwt.verify(token, key, (error, decoded) => {
       if (error) {
         return res.status(401).json({ msg: 'Token is not valid' });
       } else {

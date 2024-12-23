@@ -8,6 +8,8 @@ if(process.env.NODE_ENV === 'production') {
 } else {
 	db = config.get('mongoURI');
 }
+
+//connect to DB
 const connectDB = async () => {
 	try {
 		await mongoose.connect(db, {

@@ -65,15 +65,18 @@ router.post(
         }
       };
 
-      jwt.sign(
-        payload,
-        config.get('jwtSecret'),
-        { expiresIn: '5 days' },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      let key = '';
+      //assign secret key if its production
+      if (process.env.NODE_ENV === 'production') {
+        key = process.env.JWT_S;
+      } else {
+        key = config.get('jwtSecret');
+      }
+
+      jwt.sign(payload, key, { expiresIn: '5 days' }, (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
